@@ -7,6 +7,8 @@ import {Component} from "@angular/core";
 })
 export class HeaderComponent {
 
+  public logoPath: string = 'assets/images/logo.png'
+
   constructor() {
   }
 

@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+
+  > img {
+    width: 70px;
+  }
+
+  .title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 5px;
+
+    > span {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .first {
+      color: #242b44;
+    }
+
+    .second {
+      color: #97cf6e;
+    }
+  }
+}
+
