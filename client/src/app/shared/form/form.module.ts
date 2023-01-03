@@ -1,6 +1,7 @@
 import {NgModule} from "@angular/core";
 import {InputComponent} from "./input/input.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -8,10 +9,12 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
   ],
   imports: [
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   exports: [
     FormsModule,
+    CommonModule,
     ReactiveFormsModule,
     InputComponent
   ],

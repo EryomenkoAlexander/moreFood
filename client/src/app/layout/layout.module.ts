@@ -18,7 +18,6 @@ import {FormModule} from "../shared/form/form.module";
   exports: [
     HeaderComponent,
     FooterComponent,
-    LogoComponent
   ]
 })
 export class LayoutModule {}

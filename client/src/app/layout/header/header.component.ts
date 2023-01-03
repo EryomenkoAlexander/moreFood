@@ -1,5 +1,4 @@
 import {Component} from "@angular/core";
-import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-header',
@@ -8,15 +7,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class HeaderComponent {
 
-  public form: FormGroup = new FormGroup({
-    title: new FormControl('')
-  })
-
   constructor() {
-  }
-
-  public onSubmit() {
-    console.log(this.form.value)
   }
 
 }

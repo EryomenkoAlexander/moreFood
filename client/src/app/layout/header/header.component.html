@@ -24,15 +24,22 @@
         </li>
       </ul>
 
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <app-input formControlName="title" placeholder="sasha"></app-input>
-        <button>send</button>
-      </form>
+          <app-input
+            placeholder="Найти рецепт"
+            iconData="fa-solid fa-magnifying-glass"
+            iconPosition="before"
+          ></app-input>
 
       <div class="menu">
-        <button>=</button>
-        <button>+</button>
-        <button>!</button>
+        <div title="Мои рецепты">
+          <i class="fa-solid fa-book-bookmark"></i>
+        </div>
+        <div title="Добавить">
+          <i class="fa-solid fa-square-plus"></i>
+        </div>
+        <div title="Профиль">
+          <i class="fa-solid fa-user"></i>
+        </div>
       </div>
 
     </div>
