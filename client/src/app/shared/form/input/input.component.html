@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <label for="input">{{label}}</label>
+  <div
+    class="inner"
+    [ngClass]="{
+      before: iconPosition === 'before',
+      after: iconPosition === 'after'
+  }">
+    <label for="input" *ngIf="iconData" class="icon">
+      <i [class]="iconData"></i>
+    </label>
+    <input
+      id="input"
+      [type]="type"
+      [placeholder]="placeholder"
+      [value]="value"
+      (input)="setValue($event)"
+    >
+  </div>
+</div>
