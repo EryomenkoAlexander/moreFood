@@ -24,7 +24,10 @@
         </li>
       </ul>
 
-      <input type="text" placeholder="Поиск">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <app-input formControlName="title" placeholder="sasha"></app-input>
+        <button>send</button>
+      </form>
 
       <div class="menu">
         <button>=</button>

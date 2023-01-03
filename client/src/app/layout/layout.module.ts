@@ -3,6 +3,7 @@ import {HeaderComponent} from "./header/header.component";
 import {FooterComponent} from "./footer/footer.component";
 import {LogoComponent} from "../shared/logo/logo.component";
 import {RouterModule} from "@angular/router";
+import {FormModule} from "../shared/form/form.module";
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import {RouterModule} from "@angular/router";
     LogoComponent
   ],
   imports: [
-    RouterModule
+    RouterModule,
+    FormModule,
   ],
   exports: [
     HeaderComponent,

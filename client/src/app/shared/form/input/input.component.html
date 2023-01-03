@@ -1,0 +1,10 @@
+<div>
+  <label for="input">{{label}}</label>
+  <input
+    id="input"
+    [type]="type"
+    [placeholder]="placeholder"
+    [value]="value"
+    (input)="setValue($event)"
+  >
+</div>
