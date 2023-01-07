@@ -1,0 +1,35 @@
+.wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+
+  .inner {
+
+    > div {
+      width: 50%;
+    }
+  }
+
+  .left {
+
+    .title {
+
+      > h1 {
+        font-size: 60px;
+
+        span {
+          color: #f3b949;
+        }
+      }
+
+      > p {
+        margin-top: 20px;
+        font-weight: 500;
+        font-size: 15px;
+        opacity: .8;
+        line-height: 1.6;
+      }
+    }
+  }
+
+}
