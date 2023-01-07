@@ -3,26 +3,42 @@
     <div class="wrapper">
       <app-logo></app-logo>
 
-      <ul class="list">
-        <li>
-          <a routerLink="/">Главная</a>
-        </li>
-        <li>
-          <a routerLink="/recepts">Рецепты</a>
-        </li>
-        <li>
-          <a routerLink="/home">Кухни ()</a>
-        </li>
-        <li>
-          <a routerLink="/home">Блюда ()</a>
-        </li>
-      </ul>
+      <div class="list">
+        <div class="item">
+          <a routerLink="/home">Главная</a>
+        </div>
+        <div class="item">
+          <a routerLink="/home">Рецепты</a>
+        </div>
+        <div class="item">
+          <a routerLink="/" (click)="openKitchen()">
+            Кухни
+            <div class="icon" [ngClass]="{ iconOpen: kitchenIsOpen }"><i class="fa-solid fa-caret-down"></i></div>
+          </a>
+            <div class="drop-down" *ngIf="kitchenIsOpen">
+              <div class="item" *ngFor="let kitchen of kitchenMenu">
+                <a [href]="kitchen.route"><i [class]="kitchen.iconData + ' iconList'"></i>{{kitchen.title}}</a>
+              </div>
+            </div>
+        </div>
+        <div class="item">
+          <a routerLink="/" (click)="openDish()">
+            Блюда
+            <div class="icon" [ngClass]="{ iconOpen: dishIsOpen }"><i class="fa-solid fa-caret-down"></i></div>
+          </a>
+          <div class="drop-down" *ngIf="dishIsOpen">
+            <div class="item" *ngFor="let dish of dishMenu">
+              <a [href]="dish.route"><i [class]="dish.iconData + ' iconList'"></i>{{dish.title}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <ul class="list">
-        <li>
+      <div class="list">
+        <div class="item">
           <a routerLink="/home">Статьи</a>
-        </li>
-      </ul>
+        </div>
+      </div>
 
           <app-input
             placeholder="Найти рецепт"
