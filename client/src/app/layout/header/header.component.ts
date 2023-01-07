@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component} from "@angular/core";
 import {IDropDown} from "./core/interfaces/IDropDown";
 
 @Component({
@@ -6,7 +6,7 @@ import {IDropDown} from "./core/interfaces/IDropDown";
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent {
 
   public kitchenMenu: IDropDown[] = [
     {
@@ -100,9 +100,6 @@ export class HeaderComponent implements OnInit{
 
   public openDish() {
     this.dishIsOpen = !this.dishIsOpen
-  }
-
-  ngOnInit() {
   }
 
 }
