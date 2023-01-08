@@ -30,6 +30,45 @@
         line-height: 1.6;
       }
     }
+
+    .additional-btn {
+      display: flex;
+      align-items: center;
+      margin-top: 30px;
+
+      .question {
+        display: flex;
+        align-items: center;
+        margin-left: 50px;
+
+        > div {
+          width: 48px;
+          height: 48px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          transition: ease-in-out .2s;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+          border-radius: 100%;
+
+          &:hover {
+            box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+          }
+
+          i {
+            color: #f3b949;
+            font-size: 22px;
+          }
+        }
+
+        h5 {
+          font-weight: 600;
+          margin-left: 10px;
+          opacity: .8;
+        }
+      }
+    }
   }
 
 }
