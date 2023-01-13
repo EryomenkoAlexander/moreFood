@@ -3,7 +3,7 @@
     <div class="left">
       <div class="title">
         <h1>
-          Только аппетитные горячие
+          Только <br> аппетитные <br> горячие
           <span>рецепты</span>
         </h1>
         <p>Здесь ты найдешь как юных студентов так и опытных шеф поваров, готовых поделиться своими секретными рецептами.</p>
@@ -12,7 +12,7 @@
       <div class="additional-btn">
         <app-button text="Популярное" color="#f3b949" size="lg"></app-button>
 
-        <div class="question">
+        <div class="support">
             <div>
               <i class="fa-sharp fa-solid fa-question"></i>
             </div>
@@ -21,8 +21,16 @@
       </div>
     </div>
 
-    <div>
-      <!--    right-->
+    <div class="right">
+      <div class="right-wrapper">
+        <div *ngFor="let food of foods" class="item">
+          <div class="item-inner">
+            <img [src]="food.imagePath" [alt]="food.title">
+            <h3>{{food.title}}</h3>
+            <a [routerLink]="food.path">Посмотреть</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
