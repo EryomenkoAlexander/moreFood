@@ -2,11 +2,14 @@
   height: 100vh;
   display: flex;
   align-items: center;
+  position: relative;
 
   .inner {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    position: relative;
+    z-index: 1;
 
     > div {
       width: 50%;
@@ -133,5 +136,14 @@
         }
       }
     }
+  }
+
+  .bg {
+    position: absolute;
+    height: 60%;
+    left: 0;
+    right: 0;
+    opacity: .5;
+    margin: 0 auto;
   }
 }
