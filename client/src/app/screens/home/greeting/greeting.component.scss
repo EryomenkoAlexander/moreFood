@@ -140,10 +140,11 @@
 
   .bg {
     position: absolute;
-    height: 60%;
+    width: 85%;
     left: 0;
     right: 0;
-    opacity: .5;
+    opacity: .4;
     margin: 0 auto;
+    border-radius: 30%;
   }
 }
