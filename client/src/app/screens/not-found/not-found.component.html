@@ -1,1 +1,14 @@
-<h1>my not found url</h1>
+<div class="not-found">
+  <div class="wrapper">
+    <div class="title">
+      <h1>{{title}}</h1>
+      <p>{{description}}</p>
+      <app-button
+        text="Главная"
+        (onClick)="goToHome()"
+        size="lg"
+      ></app-button>
+    </div>
+    <img src="assets/images/not-found.jpg" alt="not-found">
+  </div>
+</div>
