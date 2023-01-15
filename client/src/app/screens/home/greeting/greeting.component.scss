@@ -85,14 +85,14 @@
 
     .right-wrapper {
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       flex-wrap: wrap;
 
       .item {
         width: 45%;
         margin: 50px 0;
         display: flex;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
 
         .item-inner {
