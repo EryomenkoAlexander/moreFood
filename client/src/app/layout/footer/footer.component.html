@@ -1,1 +1,25 @@
-<h2>my footer</h2>
+<div class="footer">
+  <div class="wrapper container">
+   <div class="socials">
+     <div
+       class="icon"
+       *ngFor="let social of socials"
+       (click)="goToSocial(social.url)">
+       <i [class]="social.iconData"></i>
+     </div>
+   </div>
+
+   <div class="description">
+     <span>{{description}}</span>
+   </div>
+
+  <div class="phoneNumber">
+    <div>
+      <div class="icon">
+        <i class="fa-solid fa-square-phone"></i>
+      </div>
+      <span>{{phoneNumber}}</span>
+    </div>
+  </div>
+  </div>
+</div>
