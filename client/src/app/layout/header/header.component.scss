@@ -1,5 +1,10 @@
 .header {
   padding: 10px 0;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
 
   .wrapper {
     display: flex;

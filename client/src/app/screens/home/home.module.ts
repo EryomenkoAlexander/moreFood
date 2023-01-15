@@ -1,13 +1,18 @@
 import {NgModule} from "@angular/core";
 import {HomeComponent} from "./home.component";
+import {GreetingComponent} from "./greeting/greeting.component";
+import {FormModule} from "../../shared/form/form.module";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    GreetingComponent
   ],
-  imports: [
-
-  ],
+    imports: [
+        FormModule,
+      RouterModule
+    ],
   exports: [
     HomeComponent
   ]

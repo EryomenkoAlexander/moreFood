@@ -1,0 +1,38 @@
+<div class="wrapper">
+  <div class="inner">
+    <div class="left">
+      <div class="title">
+        <h1>
+          Только <br> аппетитные <br> горячие
+          <span>рецепты</span>
+        </h1>
+        <p>Здесь ты найдешь как юных студентов так и опытных шеф поваров, готовых поделиться своими секретными рецептами.</p>
+      </div>
+
+      <div class="additional-btn">
+        <app-button text="Популярное" color="#f3b949" size="lg"></app-button>
+
+        <div class="support">
+            <div>
+              <i class="fa-sharp fa-solid fa-question"></i>
+            </div>
+            <h5>Тех. поддержка</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="right-wrapper">
+        <div *ngFor="let food of foods" class="item">
+          <div class="item-inner">
+            <img [src]="food.imagePath" [alt]="food.title">
+            <h3>{{food.title}}</h3>
+            <a [routerLink]="food.path">Посмотреть</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <img src="assets/images/backgrounds/leaves.jpg" alt="leaves" class="bg">
+</div>
