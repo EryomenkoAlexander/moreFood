@@ -13,7 +13,7 @@ export class GreetingComponent {
     {
       imagePath: 'assets/images/food/soup.png',
       title: 'Первые',
-      path: '/screens/recipes/deserts'
+      path: '/screens/recipes/first'
     },
     {
       imagePath: 'assets/images/food/salad.png',
@@ -35,5 +35,9 @@ export class GreetingComponent {
   constructor(
     private _router: Router
   ) {}
+
+  public goToRecipes() {
+    this._router.navigate(['screens', 'recipes'])
+  }
 
 }

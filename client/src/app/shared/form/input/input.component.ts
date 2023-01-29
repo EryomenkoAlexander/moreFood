@@ -19,10 +19,9 @@ export class InputComponent implements ControlValueAccessor{
   public value: unknown = null
 
   @Input() label: string = ''
-
+  @Input() width: string = '100%'
   @Input() type: string = 'text'
   @Input() placeholder: string = ''
-
   @Input() iconData: string = ''
   @Input() iconPosition: string = '' // before || after
 

@@ -2,6 +2,7 @@ import {NgModule} from "@angular/core";
 import {RecipesComponent} from "./recipes.component";
 import {RecipesCardComponent} from "./recipes-card/recipes-card.component";
 import {CommonModule} from "@angular/common";
+import {FormModule} from "../../shared/form/form.module";
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import {CommonModule} from "@angular/common";
     RecipesCardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormModule
   ],
   exports: []
 })
