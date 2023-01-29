@@ -11,8 +11,8 @@ export class GreetingComponent {
 
   public foods: IFood[] = [
     {
-      imagePath: 'assets/images/food/cake.png',
-      title: 'Десерты',
+      imagePath: 'assets/images/food/soup.png',
+      title: 'Первые',
       path: '/screens/recipes/deserts'
     },
     {
