@@ -1,0 +1,15 @@
+.wrapper {
+  margin-bottom: 50px;
+
+  .recipes {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    .item {
+      width: 25%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

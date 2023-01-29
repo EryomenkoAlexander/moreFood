@@ -3,6 +3,7 @@ import {HomeModule} from "./home/home.module";
 import {RouterModule} from "@angular/router";
 import {ScreensRouting} from "./screens.routing";
 import {NotFoundModule} from "./not-found/not-found.module";
+import {RecipesModule} from "./recipes/recipes.module";
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import {NotFoundModule} from "./not-found/not-found.module";
   imports: [
     HomeModule,
     NotFoundModule,
-    RouterModule.forChild(ScreensRouting)
+    RouterModule.forChild(ScreensRouting),
+    RecipesModule
   ],
   exports: [
   ]

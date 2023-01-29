@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="wrapper">
+
+    <div class="recipes">
+      <div *ngFor="let recipe of recipes" class="item">
+        <app-recipes-card
+          [data]="recipe"
+        ></app-recipes-card>
+      </div>
+    </div>
+  </div>
+</div>
