@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
 import {IRecipe} from "./core/interfaces/IRecipe";
+import {ISelect} from "./core/interfaces/ISelect";
 
 @Component({
   selector: 'app-recipes',
@@ -51,6 +52,27 @@ export class RecipesComponent {
       rating: 4.9,
       cooking_time_min: 50
     }
+  ]
+  public selectKitchen: ISelect[] = [
+    { title: 'Все', value: 'Все' },
+    { title: 'Русская', value: 'Русская' },
+    { title: 'Мексиканская', value: 'Мексиканская' },
+    { title: 'Китайская', value: 'Китайская' },
+    { title: 'Итальянская', value: 'Итальянская' },
+    { title: 'Испанская', value: 'Испанская' },
+    { title: 'Французская', value: 'Французская' },
+    { title: 'Тайская', value: 'Тайская' },
+    { title: 'Кавказская', value: 'Кавказская' },
+  ]
+  public selectDish: ISelect[] = [
+    { title: 'Все', value: 'Все' },
+    { title: 'Первые', value: 'Первые' },
+    { title: 'Вторые', value: 'Вторые' },
+    { title: 'Салаты', value: 'Салаты' },
+    { title: 'Закуски', value: 'Закуски' },
+    { title: 'Соусы', value: 'Соусы' },
+    { title: 'Выпечка', value: 'Выпечка' },
+    { title: 'Десерты', value: 'Десерты' }
   ]
 
   constructor() {}
