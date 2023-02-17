@@ -11,9 +11,9 @@ export class GreetingComponent {
 
   public foods: IFood[] = [
     {
-      imagePath: 'assets/images/food/cake.png',
-      title: 'Десерты',
-      path: '/screens/recipes/deserts'
+      imagePath: 'assets/images/food/soup.png',
+      title: 'Первые',
+      path: '/screens/recipes/first'
     },
     {
       imagePath: 'assets/images/food/salad.png',
@@ -35,5 +35,9 @@ export class GreetingComponent {
   constructor(
     private _router: Router
   ) {}
+
+  public goToRecipes() {
+    this._router.navigate(['screens', 'recipes'])
+  }
 
 }

@@ -5,7 +5,9 @@
     [ngClass]="{
       before: iconPosition === 'before',
       after: iconPosition === 'after'
-  }">
+    }"
+    [style.width]="width"
+  >
     <label for="input" *ngIf="iconData" class="icon">
       <i [class]="iconData"></i>
     </label>

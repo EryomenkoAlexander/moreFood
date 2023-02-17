@@ -13,8 +13,6 @@ import {RouterModule} from "@angular/router";
       FormModule,
       RouterModule
     ],
-  exports: [
-    HomeComponent
-  ]
+  exports: []
 })
 export class HomeModule {}

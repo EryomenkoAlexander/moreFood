@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="wrapper">
+
+    <div class="header">
+      <div class="filter">
+        <app-input
+          class="item"
+          label="Поиск"
+          placeholder="Название блюда"
+          width="500px"
+        ></app-input>
+
+        <app-select
+          class="item"
+          [items]="selectKitchen"
+          label="Кухня"
+          placeholder="Вид кухни"
+        ></app-select>
+
+        <app-select
+          class="item"
+          [items]="selectDish"
+          label="Блюдо"
+          placeholder="Вид блюда"
+        ></app-select>
+
+      </div>
+      <app-button
+        text="Создать рецепт"
+        size="md"
+        color="#91cf6e"
+      ></app-button>
+    </div>
+
+    <div class="recipes">
+      <div *ngFor="let recipe of recipes" class="item">
+        <app-recipes-card
+          [data]="recipe"
+        ></app-recipes-card>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,6 @@ export const AppRouting: Routes = [
   },
   {
     path: 'screens',
-    pathMatch: "full",
     loadChildren: () => import('./screens/screens.module').then(m => m.ScreensModule)
   },
   {

@@ -1,0 +1,25 @@
+.wrapper {
+  margin-bottom: 50px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    margin: 0 20px;
+
+    .filter {
+      display: flex;
+
+      .item {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .recipes {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
