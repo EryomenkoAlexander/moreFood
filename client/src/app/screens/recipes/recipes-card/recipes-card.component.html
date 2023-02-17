@@ -5,16 +5,20 @@
 >
   <div class="content">
     <div class="top">
-      <div class="icon" (click)="saveRecipe(data.id)">
-        <i *ngIf="!isSaveRecipe" class="fa-regular fa-star"></i>
-        <i *ngIf="isSaveRecipe" class="fa-solid fa-star"></i>
+      <div>
+        <div class="icon"><i class="fa-regular fa-star"></i></div>
+        <span>{{data.rating}}</span>
       </div>
-      <span>{{data.rating}}</span>
+
+      <div (click)="saveRecipe(data.id)" class="save">
+        <div *ngIf="!isSaveRecipe" class="icon"><i class="fa-regular fa-bookmark"></i></div>
+        <div *ngIf="isSaveRecipe" class="icon"><i class="fa-solid fa-bookmark"></i></div>
+      </div>
     </div>
 
     <div class="bottom">
       <h4>{{data.title}}</h4>
-      <div class="cooking_time">
+      <div class="short-info">
         <i class="fa-regular fa-clock"></i>
         <span>{{data.cooking_time_min}} мин</span>
       </div>

@@ -23,24 +23,35 @@
 
     .top {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       align-items: center;
 
+      > div {
+        display: flex;
+        align-items: center;
+      }
+
       .icon {
-        transition: ease-in-out .2s;
         transform: scale(1.1);
         padding: 1px 2px;
-
-        &:hover {
-          transform: scale(1.2);
-        }
 
         > i {
           color: #ffffff;
         }
       }
 
-      > span {
+      .save {
+        padding: 2px 6px;
+        transition: ease-in-out .2s;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 5px;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.3);
+        }
+      }
+
+      span {
         color: #fff;
         font-size: 14px;
         font-weight: 500;
@@ -55,7 +66,7 @@
         font-weight: 600;
       }
 
-      .cooking_time {
+      .short-info {
         display: flex;
         align-items: center;
         margin-top: 10px;

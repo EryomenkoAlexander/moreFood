@@ -15,7 +15,7 @@ export class RecipesComponent {
       preview_url: 'https://a.cdn-hotels.com/gdcs/production0/d1513/35c1c89e-408c-4449-9abe-f109068f40c0.jpg?impolicy=fcrop&w=800&h=533&q=medium',
       title: 'Салат Цезарь',
       rating: 4.8,
-      cooking_time_min: 20
+      cooking_time_min: 20,
     },
     {
       id: 2,
