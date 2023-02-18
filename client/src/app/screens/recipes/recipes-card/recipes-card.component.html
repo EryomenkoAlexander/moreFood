@@ -2,6 +2,7 @@
   *ngIf="data"
   class="wrapper"
   [style.background-image]="'url(' + data.preview_url + ')'"
+  (click)="goToOneRecipe(data.id)"
 >
   <div class="content">
     <div class="top">
