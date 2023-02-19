@@ -1,5 +1,6 @@
 import {Component, Input} from "@angular/core";
 import {IRecipe} from "../core/interfaces/IRecipe";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-recipes-card',
@@ -12,10 +13,16 @@ export class RecipesCardComponent {
 
   public isSaveRecipe: boolean = false
 
-  constructor() { }
+  constructor(
+    private _router: Router
+  ) { }
 
-  public saveRecipe(id: number) {
+  public saveRecipe(e: Event, id: number) {
+    e.stopPropagation()
     this.isSaveRecipe = !this.isSaveRecipe
   }
 
+  public goToOneRecipe(id: number) {
+    this._router.navigate(['screens', 'recipes', id])
+  }
 }

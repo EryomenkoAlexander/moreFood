@@ -4,12 +4,11 @@ import {RecipesComponent} from "./recipes/recipes.component";
 export const ScreensRouting: Routes = [
   {
     path: '',
+    redirectTo: '/',
     pathMatch: "full",
-    redirectTo: '/'
   },
   {
     path: 'recipes',
-    component: RecipesComponent,
-    pathMatch: "full"
+    loadChildren: () => import('./recipes/recipes.module').then(m => m.RecipesModule)
   }
 ]

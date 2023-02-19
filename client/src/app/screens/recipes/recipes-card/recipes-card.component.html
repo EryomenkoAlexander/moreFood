@@ -2,6 +2,7 @@
   *ngIf="data"
   class="wrapper"
   [style.background-image]="'url(' + data.preview_url + ')'"
+  (click)="goToOneRecipe(data.id)"
 >
   <div class="content">
     <div class="top">
@@ -10,7 +11,7 @@
         <span>{{data.rating}}</span>
       </div>
 
-      <div (click)="saveRecipe(data.id)" class="save">
+      <div (click)="saveRecipe($event, data.id)" class="save">
         <div *ngIf="!isSaveRecipe" class="icon"><i class="fa-regular fa-bookmark"></i></div>
         <div *ngIf="isSaveRecipe" class="icon"><i class="fa-solid fa-bookmark"></i></div>
       </div>

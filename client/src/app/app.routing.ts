@@ -5,8 +5,8 @@ import {NotFoundComponent} from "./screens/not-found/not-found.component";
 export const AppRouting: Routes = [
   {
     path: '',
+    component: HomeComponent,
     pathMatch: "full",
-    component: HomeComponent
   },
   {
     path: 'screens',
