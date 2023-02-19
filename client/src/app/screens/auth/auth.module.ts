@@ -16,7 +16,7 @@ import {FormsModule} from "@angular/forms";
     CommonModule,
     RouterModule.forChild(AuthRouting),
     FormModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [],
   providers: []

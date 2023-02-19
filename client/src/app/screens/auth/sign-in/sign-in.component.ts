@@ -9,7 +9,12 @@ import {linkConfidentiality} from "../core/consts";
 export class SignInComponent {
 
   public linkConfidentiality: string = linkConfidentiality
+  public showPassword: boolean = false;
 
   constructor() { }
+
+  public toggleShowPassword() {
+    this.showPassword = !this.showPassword
+  }
 
 }

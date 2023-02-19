@@ -18,6 +18,8 @@
         <app-input
           label="Номер телефона"
           placeholder="+0 (000) 000 00 00"
+          [mask]="maskPhoneNumber"
+          [dropSpecialCharacters]="wastePhoneNumber"
         ></app-input>
       </div>
 
@@ -25,6 +27,10 @@
         <app-input
           label="Пароль"
           placeholder="******"
+          [iconData]="showPassword ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash'"
+          [type]="showPassword ? 'text' : 'password'"
+          iconPosition="after"
+          (onClickIcon)="toggleShowPassword()"
         ></app-input>
       </div>
 
@@ -32,6 +38,10 @@
         <app-input
           label="Подтверждение пароля"
           placeholder="******"
+          [iconData]="showConfirmPassword ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash'"
+          [type]="showConfirmPassword ? 'text' : 'password'"
+          iconPosition="after"
+          (onClickIcon)="toggleConfirmShowPassword()"
         ></app-input>
       </div>
 

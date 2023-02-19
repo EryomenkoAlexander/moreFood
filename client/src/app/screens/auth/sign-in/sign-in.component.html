@@ -17,6 +17,10 @@
         <app-input
           label="Пароль"
           placeholder="******"
+          [iconData]="showPassword ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash'"
+          [type]="showPassword ? 'text' : 'password'"
+          iconPosition="after"
+          (onClickIcon)="toggleShowPassword()"
         ></app-input>
       </div>
 

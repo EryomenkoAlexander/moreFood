@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <label for="input">{{label}}</label>
+  <label>{{label}}</label>
   <div
     class="inner"
     [ngClass]="{
@@ -8,15 +8,17 @@
     }"
     [style.width]="width"
   >
-    <label for="input" *ngIf="iconData" class="icon">
+    <label *ngIf="iconData" class="icon" (click)="clickIcon()">
       <i [class]="iconData"></i>
     </label>
     <input
-      id="input"
+      autocomplete="new-password"
       [type]="type"
       [placeholder]="placeholder"
       [value]="value"
       (input)="setValue($event)"
+      [mask]="mask"
+      [dropSpecialCharacters]="dropSpecialCharacters"
     >
   </div>
 </div>

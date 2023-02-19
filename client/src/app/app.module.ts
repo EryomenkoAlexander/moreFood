@@ -5,6 +5,7 @@ import {ScreensModule} from "./screens/screens.module";
 import {RouterModule, RouterOutlet} from "@angular/router";
 import {AppRouting} from "./app.routing";
 import {LayoutModule} from "./layout/layout.module";
+import {NgxMaskModule} from "ngx-mask";
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {LayoutModule} from "./layout/layout.module";
     RouterOutlet,
     RouterModule.forRoot(AppRouting),
     ScreensModule,
-    LayoutModule
+    LayoutModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [],
   bootstrap: [
