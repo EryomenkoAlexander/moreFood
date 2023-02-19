@@ -17,7 +17,8 @@ export class RecipesCardComponent {
     private _router: Router
   ) { }
 
-  public saveRecipe(id: number) {
+  public saveRecipe(e: Event, id: number) {
+    e.stopPropagation()
     this.isSaveRecipe = !this.isSaveRecipe
   }
 
