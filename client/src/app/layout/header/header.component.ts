@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
 import {IDropDown} from "./core/interfaces/IDropDown";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -91,8 +92,9 @@ export class HeaderComponent {
   ]
   public dishIsOpen: boolean = false;
 
-  constructor() {
-  }
+  constructor(
+    private _router: Router
+  ) { }
 
   public openKitchen() {
     this.kitchenIsOpen = !this.kitchenIsOpen
@@ -100,6 +102,10 @@ export class HeaderComponent {
 
   public openDish() {
     this.dishIsOpen = !this.dishIsOpen
+  }
+
+  public goToAuth() {
+    this._router.navigate(['screens', 'auth', 'sign-in'])
   }
 
 }
