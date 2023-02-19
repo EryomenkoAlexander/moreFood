@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {ButtonComponent} from "./button/button.component";
 import {SelectComponent} from "./select/select.component";
+import {NgxMaskModule} from "ngx-mask";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {SelectComponent} from "./select/select.component";
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    NgxMaskModule
   ],
   exports: [
     FormsModule,
@@ -22,7 +24,8 @@ import {SelectComponent} from "./select/select.component";
     ReactiveFormsModule,
     InputComponent,
     ButtonComponent,
-    SelectComponent
+    SelectComponent,
   ],
+  providers: []
 })
 export class FormModule {}

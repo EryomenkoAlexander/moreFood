@@ -1,4 +1,4 @@
-import {Component, forwardRef, Input} from "@angular/core";
+import {Component, EventEmitter, forwardRef, Input, Output} from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 @Component({
@@ -23,9 +23,17 @@ export class InputComponent implements ControlValueAccessor{
   @Input() type: string = 'text'
   @Input() placeholder: string = ''
   @Input() iconData: string = ''
+  @Input() mask: string = ''
+  @Input() dropSpecialCharacters: string[] = []
   @Input() iconPosition: string = '' // before || after
 
+  @Output() onClickIcon: EventEmitter<boolean> = new EventEmitter<boolean>()
+
   constructor() {}
+
+  public clickIcon() {
+    this.onClickIcon.emit(true)
+  }
 
   public setValue(e: any) {
     const {value} = e.target
