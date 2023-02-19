@@ -1,4 +1,5 @@
 import {Component} from "@angular/core";
+import {linkConfidentiality} from "../core/consts";
 
 @Component({
   selector: 'app-registration',
@@ -6,6 +7,8 @@ import {Component} from "@angular/core";
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent {
+
+  public linkConfidentiality: string = linkConfidentiality
 
   constructor() { }
 
