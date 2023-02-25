@@ -1,11 +1,7 @@
 .footer {
   padding: 30px 0;
   background: #242b44;
-  position: absolute;
-  z-index: 100;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  transform: translateY(100%);
 
  .wrapper {
    display: flex;
