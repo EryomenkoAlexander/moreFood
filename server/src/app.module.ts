@@ -1,12 +1,14 @@
 import { Module } from '@nestjs/common';
 import {MongooseModule} from "@nestjs/mongoose";
-import {mongoDB_src} from "./core/consts";
 import {UsersModule} from "./users/users.module";
+import {mongoDB_src} from "./core/consts/mongoDB";
+import {AuthModule} from "./auth/auth.module";
 
 @Module({
   imports: [
     MongooseModule.forRoot(mongoDB_src),
-      UsersModule
+    AuthModule,
+    UsersModule,
   ],
   controllers: [],
   providers: [],
