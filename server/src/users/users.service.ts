@@ -12,17 +12,17 @@ export class UsersService {
        @InjectModel(Users.name) private _usersModel: Model<UsersDocument>
     ) { }
 
+    public async createUser(dto: CreateUserDto): Promise<Users> {
+        const newUser = new this._usersModel(dto)
+        return newUser.save()
+    }
+
     public async getUsers(): Promise<Users[]> {
         return this._usersModel.find().exec()
     }
 
     public async getOneUser(id: string): Promise<Users> {
         return this._usersModel.findById(id)
-    }
-
-    public async createUser(dto: CreateUserDto): Promise<Users> {
-        const newUser = new this._usersModel(dto)
-        return newUser.save()
     }
 
     public async updateUser(id: string, dto: UpdateUserDto): Promise<Users> {

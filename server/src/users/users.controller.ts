@@ -3,6 +3,7 @@ import {UsersService} from "./users.service";
 import {CreateUserDto} from "./dto/create-user.dto";
 import {Users} from "./schemas/users.schema";
 import {UpdateUserDto} from "./dto/update-user.dto";
+import * as bcrypt from 'bcrypt';
 
 @Controller('users')
 export class UsersController {
@@ -10,6 +11,17 @@ export class UsersController {
     constructor(
         private _usersService: UsersService
     ) { }
+
+    @Post()
+    private async _createUser(@Body() dto: CreateUserDto): Promise<Users> {
+        const salt = await bcrypt.genSalt()
+        const hashedPassword = await bcrypt.hash(dto.password, salt)
+        const user = {
+            ...dto,
+            password: hashedPassword
+        }
+        return this._usersService.createUser(user)
+    }
 
     @Get()
     private _getUsers(): Promise<Users[]> {
@@ -19,11 +31,6 @@ export class UsersController {
     @Get(':id')
     private _getOneUser(@Param('id') id: string): Promise<Users> {
         return this._usersService.getOneUser(id)
-    }
-
-    @Post()
-    private _createUser(@Body() dto: CreateUserDto): Promise<Users> {
-        return this._usersService.createUser(dto)
     }
 
     @Patch(':id')
