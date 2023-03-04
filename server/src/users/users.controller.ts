@@ -1,4 +1,4 @@
-import {BadRequestException, Body, Controller, Delete, Get, Param, Patch, Post} from "@nestjs/common";
+import {BadRequestException, Body, Controller, Delete, Get, Param, Patch, Post, UseGuards} from "@nestjs/common";
 import {UsersService} from "./users.service";
 import {CreateUserDto} from "./core/dto/create-user.dto";
 import {Users} from "./core/schemas/users.schema";
@@ -7,6 +7,7 @@ import {UpdatePasswordDto} from "./core/dto/update-password.dto";
 import {BcryptService} from "../core/services/bcrypt.service";
 import {CurrentUser} from "../core/decorators/current-user.decorator";
 import {IUser} from "./core/interfaces/IUser";
+import {LocalAuthGuard} from "../auth/core/guards/local-auth.guard";
 
 @Controller('users')
 export class UsersController {
@@ -26,6 +27,7 @@ export class UsersController {
         return this._usersService.createUser(user)
     }
 
+    @UseGuards(LocalAuthGuard)
     @Get()
     private async _getUsers(): Promise<Users[]> {
         return this._usersService.getUsers()
@@ -52,7 +54,7 @@ export class UsersController {
         const { oldPassword, newPassword } = dto
 
         const storedUser = await this._usersService.getOneUser(user._id)
-        const isMatch = this._bcryptService.compare(oldPassword, storedUser.password)
+        const isMatch = this._bcryptService.comparePassword(oldPassword, storedUser.password)
 
         if (!isMatch) {
             throw new BadRequestException('Неверный текущий пароль');

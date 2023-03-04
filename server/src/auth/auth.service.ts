@@ -1,8 +1,8 @@
 import {Injectable} from "@nestjs/common";
 import { JwtService } from '@nestjs/jwt';
-import {UsersService} from "../../../users/users.service";
-import {BcryptService} from "../../../core/services/bcrypt.service";
-import {IUser} from "../../../users/core/interfaces/IUser";
+import {UsersService} from "../users/users.service";
+import {BcryptService} from "../core/services/bcrypt.service";
+import {IUser} from "../users/core/interfaces/IUser";
 
 @Injectable()
 export class AuthService {
@@ -20,7 +20,7 @@ export class AuthService {
             return null
         }
 
-        if (this._bcryptService.compare(password, user.password)) {
+        if (this._bcryptService.comparePassword(password, user.password)) {
             const { password, ...result } = user
             return result
         }

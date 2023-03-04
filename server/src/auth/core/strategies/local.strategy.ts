@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import {AuthGuard} from '@nestjs/passport';
-import {AuthService} from "../services/auth.service";
+import {AuthService} from "../../auth.service";
 import {Users} from "../../../users/core/schemas/users.schema";
 
 @Injectable()
