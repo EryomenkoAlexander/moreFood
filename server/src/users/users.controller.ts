@@ -27,7 +27,6 @@ export class UsersController {
         return this._usersService.createUser(user)
     }
 
-    @UseGuards(LocalAuthGuard)
     @Get()
     private async _getUsers(): Promise<Users[]> {
         return this._usersService.getUsers()

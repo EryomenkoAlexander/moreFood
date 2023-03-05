@@ -11,6 +11,7 @@ import {ConfigModule, ConfigService} from "@nestjs/config";
 import {UsersModule} from "../users/users.module";
 import {JwtStrategy} from "./core/strategies/jwt.strategy";
 import {AuthController} from "./auth.controller";
+import * as passport from 'passport';
 
 @Module({
     imports: [
@@ -47,4 +48,12 @@ import {AuthController} from "./auth.controller";
         AuthController
     ]
 })
-export class AuthModule {}
+export class AuthModule {
+
+    constructor(
+        private _authService: AuthService
+    ) {
+        passport.use(new LocalStrategy(_authService));
+    }
+
+}
