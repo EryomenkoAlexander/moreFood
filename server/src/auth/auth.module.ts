@@ -1,24 +1,19 @@
 import {Module} from "@nestjs/common";
-import {PassportModule} from "@nestjs/passport";
 import {AuthService} from "./auth.service";
-import {LocalStrategy} from "./core/strategies/local.strategy";
 import {UsersService} from "../users/users.service";
 import {JwtModule} from "@nestjs/jwt";
 import {BcryptService} from "../core/services/bcrypt.service";
-import {Users, UsersSchema} from "../users/core/schemas/users.schema";
+import {User, UserSchema} from "../core/schemas/user.schema";
 import {MongooseModule} from "@nestjs/mongoose";
 import {ConfigModule, ConfigService} from "@nestjs/config";
-import {UsersModule} from "../users/users.module";
-import {JwtStrategy} from "./core/strategies/jwt.strategy";
 import {AuthController} from "./auth.controller";
-import * as passport from 'passport';
 
 @Module({
     imports: [
         MongooseModule.forFeature([
             {
-                name: Users.name,
-                schema: UsersSchema
+                name: User.name,
+                schema: UserSchema
             }
         ]),
         JwtModule.registerAsync({
@@ -29,31 +24,16 @@ import * as passport from 'passport';
             }),
             inject: [ConfigService],
         }),
-        PassportModule,
-        ConfigModule,
-        UsersModule,
         ConfigModule.forRoot(),
     ],
     providers: [
         AuthService,
-        LocalStrategy,
         UsersService,
         BcryptService,
-        JwtStrategy
     ],
-    exports: [
-        AuthService
-    ],
+    exports: [],
     controllers: [
         AuthController
     ]
 })
-export class AuthModule {
-
-    constructor(
-        private _authService: AuthService
-    ) {
-        passport.use(new LocalStrategy(_authService));
-    }
-
-}
+export class AuthModule {}

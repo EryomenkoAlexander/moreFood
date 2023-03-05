@@ -1,16 +1,13 @@
 import { Module } from '@nestjs/common';
 import {MongooseModule} from "@nestjs/mongoose";
-import {UsersModule} from "./users/users.module";
-import {mongoDB_src} from "./core/consts/mongoDB";
 import {AuthModule} from "./auth/auth.module";
-import {PassportModule} from "@nestjs/passport";
+import {UsersModule} from "./users/users.module";
 
 @Module({
   imports: [
-    MongooseModule.forRoot(mongoDB_src),
+    MongooseModule.forRoot(process.env.MONGODB_SRC),
     AuthModule,
     UsersModule,
-    PassportModule,
   ],
   controllers: [],
   providers: [],

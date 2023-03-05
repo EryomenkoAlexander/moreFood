@@ -6,8 +6,7 @@ export class BcryptService {
 
     public async createHash(value: string | Buffer, saltRounds: number = 10): Promise<string> {
         const salt = await bcrypt.genSalt(saltRounds);
-        const hashedValue: string = await bcrypt.hash(value, salt)
-        return hashedValue
+        return await bcrypt.hash(value, salt)
     }
 
     public async comparePassword(password: string, hash: string | Buffer): Promise<boolean> {
