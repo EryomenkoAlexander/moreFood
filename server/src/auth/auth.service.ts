@@ -10,13 +10,13 @@ import {JwtPayload} from "jsonwebtoken";
 export class AuthService {
 
     constructor(
-        private _userService: UsersService,
+        private _usersService: UsersService,
         private _jwtService: JwtService,
         private _bcryptService: BcryptService,
     ) {}
 
     public async validateUser(email: string, password: string): Promise<IUser | null> {
-        const user: IUser | null = await this._userService.getUserByEmail(email)
+        const user: IUser | null = await this._usersService.getUserByEmail(email)
 
         if (!user) {
             throw new UnauthorizedException('Неверные учетные данные');

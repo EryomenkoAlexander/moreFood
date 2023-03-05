@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from "@nestjs/common";
+import {Body, Controller, Delete, Get, Param, Patch, Post, UnauthorizedException} from "@nestjs/common";
 import {UsersService} from "./users.service";
 import {CreateUserDto} from "./core/dto/create-user.dto";
 import {UpdateUserDto} from "./core/dto/update-user.dto";
@@ -10,17 +10,23 @@ export class UsersController {
 
     constructor(
         private _usersService: UsersService,
-        private _bcryptService: BcryptService
+        private _bcryptService: BcryptService,
     ) { }
 
     @Post()
-    private async _createUser(@Body() dto: CreateUserDto): Promise<IUser> {
-        const hashedPassword = await this._bcryptService.createHash(dto.password)
-        const user = {
-            ...dto,
+    private async _createUser(@Body() userDto: CreateUserDto): Promise<IUser> {
+        const user: IUser | null = await this._usersService.getUserByEmail(userDto.email)
+
+        if (user) {
+            throw new UnauthorizedException('Пользователь с таким email уже существует');
+        }
+
+        const hashedPassword = await this._bcryptService.createHash(userDto.password)
+        const newUser = {
+            ...userDto,
             password: hashedPassword
         }
-        return this._usersService.createUser(user)
+        return this._usersService.createUser(newUser)
     }
 
     @Get()
@@ -36,9 +42,34 @@ export class UsersController {
     @Patch(':id')
     private async _updateUser(
         @Param('id') id: string,
-        @Body() dto: UpdateUserDto
+        @Body() userDto: UpdateUserDto
     ): Promise<IUser> {
-        return this._usersService.updateUser(id, dto)
+        const userById: IUser | null = await this._usersService.getUserById(userDto.email)
+        if (!userById) {
+            throw new UnauthorizedException('Пользователь не найден');
+        }
+
+        const userByEmail: IUser | null = await this._usersService.getUserByEmail(userDto.email)
+        if (userByEmail) {
+            if (userById._id.toString() !== userByEmail._id.toString()) {
+                throw new UnauthorizedException('Пользователь с таким email уже существует');
+            }
+        }
+
+        const isPasswordMatch = await this._bcryptService.comparePassword(userDto.password, userById.password);
+
+        if (!isPasswordMatch) {
+            const hashedPassword: string = await this._bcryptService.createHash(userDto.password)
+            return this._usersService.updateUser(id, {
+                ...userDto,
+                password: hashedPassword
+            })
+        }
+
+        return this._usersService.updateUser(id, {
+            ...userDto,
+            password: userById.password
+        })
     }
 
     @Delete(':id')
