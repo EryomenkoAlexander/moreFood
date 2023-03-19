@@ -6,7 +6,6 @@
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   transition: ease-in-out .2s;
   cursor: pointer;
-  width: 100%;
 
   &:hover {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -26,4 +25,12 @@
 .lg {
   background: pink;
   padding: 15px 30px;
+}
+
+.auto {
+  width: auto;
+}
+
+.full {
+  width: 100%;
 }
