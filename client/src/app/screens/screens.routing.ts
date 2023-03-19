@@ -8,6 +8,10 @@ export const ScreensRouting: Routes = [
     pathMatch: "full",
   },
   {
+    path: 'cabinet',
+    loadChildren: () => import('./cabinet/cabinet.module').then(m => m.CabinetModule)
+  },
+  {
     path: 'recipes',
     loadChildren: () => import('./recipes/recipes.module').then(m => m.RecipesModule)
   },

@@ -6,6 +6,7 @@ import {RouterModule, RouterOutlet} from "@angular/router";
 import {AppRouting} from "./app.routing";
 import {LayoutModule} from "./layout/layout.module";
 import {NgxMaskModule} from "ngx-mask";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {NgxMaskModule} from "ngx-mask";
     ScreensModule,
     LayoutModule,
     NgxMaskModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [
