@@ -5,7 +5,7 @@
       <p>Создайте свой аккаунт и исследуйте рецепты!</p>
     </div>
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="item">
         <app-input
           label="Имя"

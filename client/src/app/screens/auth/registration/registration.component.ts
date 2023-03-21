@@ -35,7 +35,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phoneNumber: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required, matchOtherValidator('password')]]
     })
   }
@@ -54,7 +54,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     this._authService.register(data)
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
-        this._router.navigate(['screens', 'cabinet'])
+        this._router.navigate(['screens', 'auth', 'sign-in'])
       })
   }
 
