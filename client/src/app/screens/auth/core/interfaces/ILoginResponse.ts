@@ -1,4 +1,4 @@
 export interface ILoginResponse {
-  _id: number
+  _id: string
   access_token: string
 }

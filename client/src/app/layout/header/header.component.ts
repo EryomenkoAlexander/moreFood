@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
 import {IDropDown} from "./core/interfaces/IDropDown";
 import {Router} from "@angular/router";
+import {AuthService} from "../../auth/services/auth.service";
 
 @Component({
   selector: 'app-header',
@@ -93,7 +94,8 @@ export class HeaderComponent {
   public dishIsOpen: boolean = false;
 
   constructor(
-    private _router: Router
+    private _router: Router,
+    private _authService: AuthService
   ) { }
 
   public openKitchen() {
@@ -104,7 +106,15 @@ export class HeaderComponent {
     this.dishIsOpen = !this.dishIsOpen
   }
 
-  public goToAuth() {
+  public checkAuth() {
+
+    const userId: string | null = this._authService.getUserId()
+
+    if (userId) {
+      this._router.navigate(['screens', 'cabinet', userId])
+      return
+    }
+
     this._router.navigate(['screens', 'auth', 'sign-in'])
   }
 

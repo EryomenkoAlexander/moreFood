@@ -10,4 +10,10 @@ export class AuthService {
     return !!token
   }
 
+  public getUserId(): string | null {
+    const userId: string | null =  localStorage.getItem('moreFood-userId')
+
+    return userId ? userId : null
+  }
+
 }

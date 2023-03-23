@@ -45,11 +45,13 @@ export class UsersController {
         @Body() userDto: UpdateUserDto
     ): Promise<IUser> {
         const userById: IUser | null = await this._usersService.getUserById(userDto.email)
+
         if (!userById) {
             throw new UnauthorizedException('Пользователь не найден');
         }
 
         const userByEmail: IUser | null = await this._usersService.getUserByEmail(userDto.email)
+
         if (userByEmail) {
             if (userById._id.toString() !== userByEmail._id.toString()) {
                 throw new UnauthorizedException('Пользователь с таким email уже существует');

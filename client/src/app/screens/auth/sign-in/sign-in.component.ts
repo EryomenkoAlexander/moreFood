@@ -41,6 +41,7 @@ export class SignInComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this._destroy$))
       .subscribe((response: ILoginResponse) => {
         localStorage.setItem('moreFood-accessToken', response.access_token)
+        localStorage.setItem('moreFood-userId', response._id)
         this._router.navigate(['screens', 'cabinet', response._id])
       })
   }
