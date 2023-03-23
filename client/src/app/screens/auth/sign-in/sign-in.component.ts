@@ -5,7 +5,7 @@ import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
 import {Subject, takeUntil} from "rxjs";
 import {Token} from "@angular/compiler";
-import {IAccessToken} from "../core/interfaces/IAccessToken";
+import {ILoginResponse} from "../core/interfaces/ILoginResponse";
 
 @Component({
   selector: 'app-sign-in',
@@ -39,9 +39,9 @@ export class SignInComponent implements OnInit, OnDestroy {
 
     this._authServer.signIn(data)
       .pipe(takeUntil(this.destroy$))
-      .subscribe((response: IAccessToken) => {
-        sessionStorage.setItem('moreFood-accessToken', response.access_token)
-        this._router.navigate(['screens', 'cabinet', '/123'])
+      .subscribe((response: ILoginResponse) => {
+        localStorage.setItem('moreFood-accessToken', response.access_token)
+        this._router.navigate(['screens', 'cabinet', response._id])
       })
   }
 

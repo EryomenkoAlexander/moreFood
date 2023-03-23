@@ -5,6 +5,7 @@ import {BcryptService} from "../core/services/bcrypt.service";
 import {LoginDto} from "./core/dto/login.dto";
 import {IUser} from "../users/core/interfaces/IUser";
 import {JwtPayload} from "jsonwebtoken";
+import {ILoginResponse} from "./core/interfaces/ILoginResponse";
 
 @Injectable()
 export class AuthService {
@@ -31,7 +32,7 @@ export class AuthService {
         return user
     }
 
-    public async login(loginDto: LoginDto) {
+    public async login(loginDto: LoginDto): Promise<ILoginResponse | Error> {
         const { email, password } = loginDto;
         const user: IUser | null = await this.validateUser(email, password);
 
@@ -42,6 +43,7 @@ export class AuthService {
         const payload: JwtPayload = { sub: user._id };
 
         return {
+            _id: user._id,
             access_token: this._jwtService.sign(payload),
         }
     }
