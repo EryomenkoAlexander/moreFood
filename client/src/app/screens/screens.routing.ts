@@ -1,5 +1,4 @@
 import {Routes} from "@angular/router";
-import {RecipesComponent} from "./recipes/recipes.component";
 
 export const ScreensRouting: Routes = [
   {
@@ -9,7 +8,7 @@ export const ScreensRouting: Routes = [
   },
   {
     path: 'cabinet',
-    loadChildren: () => import('./cabinet/cabinet.module').then(m => m.CabinetModule)
+    loadChildren: () => import('./cabinet/cabinet.module').then(m => m.CabinetModule),
   },
   {
     path: 'auth',

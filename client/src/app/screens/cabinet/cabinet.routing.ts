@@ -1,5 +1,6 @@
 import {Routes} from "@angular/router";
 import {CabinetComponent} from "./cabinet.component";
+import {AuthGuard} from "../../auth/guards/auth.guard";
 
 export const CabinetRouting: Routes = [
   {
@@ -10,6 +11,7 @@ export const CabinetRouting: Routes = [
   {
     path: 'cabinet/:id',
     component: CabinetComponent,
-    pathMatch: "full"
+    pathMatch: "full",
+    canActivate: [AuthGuard]
   }
 ]

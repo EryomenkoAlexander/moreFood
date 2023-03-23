@@ -14,7 +14,7 @@ import {ILoginResponse} from "../core/interfaces/ILoginResponse";
 })
 export class SignInComponent implements OnInit, OnDestroy {
 
-  private destroy$: Subject<any> = new Subject<any>()
+  private _destroy$: Subject<any> = new Subject<any>()
 
   public linkConfidentiality: string = linkConfidentiality
   public showPassword: boolean = false;
@@ -38,7 +38,7 @@ export class SignInComponent implements OnInit, OnDestroy {
     const data = this.form.value
 
     this._authServer.signIn(data)
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntil(this._destroy$))
       .subscribe((response: ILoginResponse) => {
         localStorage.setItem('moreFood-accessToken', response.access_token)
         this._router.navigate(['screens', 'cabinet', response._id])
@@ -54,8 +54,8 @@ export class SignInComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.destroy$.next(null)
-    this.destroy$.complete()
+    this._destroy$.next(null)
+    this._destroy$.complete()
   }
 
 }
