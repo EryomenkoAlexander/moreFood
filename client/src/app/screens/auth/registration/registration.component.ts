@@ -2,9 +2,9 @@ import {Component, OnDestroy, OnInit} from "@angular/core";
 import {linkConfidentiality} from "../core/consts";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {matchOtherValidator} from "../core/validators/match-other-validator";
-import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
 import {Subject, takeUntil} from "rxjs";
+import {AuthService} from "../../../auth/services/auth.service";
 
 @Component({
   selector: 'app-registration',

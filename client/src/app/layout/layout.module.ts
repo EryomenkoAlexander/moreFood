@@ -4,6 +4,7 @@ import {FooterComponent} from "./footer/footer.component";
 import {LogoComponent} from "../shared/logo/logo.component";
 import {RouterModule} from "@angular/router";
 import {FormModule} from "../shared/form/form.module";
+import {HeaderService} from "./header/core/services/header.service";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,9 @@ import {FormModule} from "../shared/form/form.module";
   exports: [
     HeaderComponent,
     FooterComponent,
+  ],
+  providers: [
+    HeaderService
   ]
 })
 export class LayoutModule {}

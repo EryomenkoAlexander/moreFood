@@ -1,11 +1,10 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
 import {linkConfidentiality} from "../core/consts";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
 import {Subject, takeUntil} from "rxjs";
-import {Token} from "@angular/compiler";
 import {ILoginResponse} from "../core/interfaces/ILoginResponse";
+import {AuthService} from "../../../auth/services/auth.service";
 
 @Component({
   selector: 'app-sign-in',

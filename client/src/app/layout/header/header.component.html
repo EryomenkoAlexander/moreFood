@@ -53,8 +53,11 @@
         <div title="Добавить">
           <i class="fa-solid fa-square-plus"></i>
         </div>
-        <div title="Профиль" (click)="checkAuth()">
+        <div *ngIf="!user" title="Профиль" (click)="goToSignIn()">
           <i class="fa-solid fa-user"></i>
+        </div>
+        <div *ngIf="user" title="Профиль" (click)="goToCabinet()">
+          <img [src]="user.avatar" alt="avatar">
         </div>
       </div>
 

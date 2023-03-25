@@ -6,7 +6,6 @@ import {AuthRouting} from "./auth.routing";
 import {RegistrationComponent} from "./registration/registration.component";
 import {FormModule} from "../../shared/form/form.module";
 import {FormsModule} from "@angular/forms";
-import {AuthService} from "./services/auth.service";
 
 @NgModule({
   declarations: [
@@ -19,9 +18,6 @@ import {AuthService} from "./services/auth.service";
     FormModule,
     FormsModule,
   ],
-  exports: [],
-  providers: [
-    AuthService
-  ]
+  exports: []
 })
 export class AuthModule {}

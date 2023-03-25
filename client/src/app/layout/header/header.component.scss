@@ -84,6 +84,8 @@
         opacity: 0.8;
         transition: ease-in-out .2s;
         padding: 2px;
+        display: flex;
+        align-items: center;
 
         &:hover {
           opacity: 1;
@@ -92,6 +94,11 @@
 
         i {
           color: #242b44;
+        }
+
+        img {
+          width: 40px;
+          border-radius: 20px;
         }
       }
     }

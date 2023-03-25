@@ -1,102 +1,51 @@
-import {Component} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {IDropDown} from "./core/interfaces/IDropDown";
 import {Router} from "@angular/router";
 import {AuthService} from "../../auth/services/auth.service";
+import {dishMenu} from "./core/consts/dishMenu";
+import {kitchenMenu} from "./core/consts/kitchenMenu";
+import {HeaderService} from "./core/services/header.service";
+import {Subject, takeUntil} from "rxjs";
+import {IUser} from "../../screens/auth/core/interfaces/IUser";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit, OnDestroy {
 
-  public kitchenMenu: IDropDown[] = [
-    {
-      title: 'Русская',
-      route: '/recipes/kitchen/?queryParams',
-      iconData: 'fa-solid fa-flag'
-    },
-    {
-      title: 'Мексиканская',
-      route: '/recipes/kitchen/?queryParams',
-      iconData: 'fa-solid fa-flag'
-    },
-    {
-      title: 'Китайская',
-      route: '/recipes/kitchen/?queryParams',
-      iconData: 'fa-solid fa-flag'
-    },
-    {
-      title: 'Итальянская',
-      route: '/recipes/kitchen/?queryParams',
-      iconData: 'fa-solid fa-flag'
-    },
-    {
-      title: 'Испанская',
-      route: '/recipes/kitchen/?queryParams',
-      iconData: 'fa-solid fa-flag'
-    },
-    {
-      title: 'Французская',
-      route: '/recipes/kitchen/?queryParams',
-      iconData: 'fa-solid fa-flag'
-    },
-    {
-      title: 'Тайская',
-      route: '/recipes/kitchen/?queryParams',
-      iconData: 'fa-solid fa-flag'
-    },
-    {
-      title: 'Кавказская',
-      route: '/recipes/kitchen/?queryParams',
-      iconData: 'fa-solid fa-flag'
-    },
-  ]
+  private _destroy$: Subject<any> = new Subject<any>()
+
+  public user!: IUser
+
+  public kitchenMenu: IDropDown[] = kitchenMenu
   public kitchenIsOpen: boolean = false;
 
-  public dishMenu: IDropDown[] = [
-    {
-      title: 'Первые',
-      route: '/recipes/dish/?queryParams',
-      iconData: 'fa-solid fa-plate-wheat'
-    },
-    {
-      title: 'Вторые',
-      route: '/recipes/dish/?queryParams',
-      iconData: 'fa-solid fa-drumstick-bite'
-    },
-    {
-      title: 'Салаты',
-      route: '/recipes/dish/?queryParams',
-      iconData: 'fa-solid fa-carrot'
-    },
-    {
-      title: 'Закуски',
-      route: '/recipes/dish/?queryParams',
-      iconData: 'fa-solid fa-fish'
-    },
-    {
-      title: 'Соусы',
-      route: '/recipes/dish/?queryParams',
-      iconData: 'fa-solid fa-whiskey-glass'
-    },
-    {
-      title: 'Выпечка',
-      route: '/recipes/dish/?queryParams',
-      iconData: 'fa-solid fa-cookie'
-    },
-    {
-      title: 'Десерты',
-      route: '/recipes/dish/?queryParams',
-      iconData: 'fa-solid fa-cake-candles'
-    }
-  ]
+  public dishMenu: IDropDown[] = dishMenu
   public dishIsOpen: boolean = false;
 
   constructor(
     private _router: Router,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _headerService: HeaderService,
   ) { }
+
+  private _getUser(id: string) {
+    this._headerService.getUser(id)
+      .pipe(takeUntil(this._destroy$))
+      .subscribe((response: IUser) => {
+        this.user = response
+      })
+  }
+
+  private subscribeSignalAuth() {
+    this._authService.signalAuth
+      .pipe(takeUntil(this._destroy$))
+      .subscribe((response: string) => {
+        this._getUser(response)
+      })
+  }
 
   public openKitchen() {
     this.kitchenIsOpen = !this.kitchenIsOpen
@@ -107,15 +56,29 @@ export class HeaderComponent {
   }
 
   public checkAuth() {
-
     const userId: string | null = this._authService.getUserId()
 
     if (userId) {
-      this._router.navigate(['screens', 'cabinet', userId])
-      return
+      this._getUser(userId)
     }
+  }
 
+  public goToSignIn() {
     this._router.navigate(['screens', 'auth', 'sign-in'])
+  }
+
+  public goToCabinet() {
+    this._router.navigate(['screens', 'cabinet', this.user._id])
+  }
+
+  ngOnInit() {
+    this.checkAuth()
+    this.subscribeSignalAuth()
+  }
+
+  ngOnDestroy() {
+    this._destroy$.next(null)
+    this._destroy$.complete()
   }
 
 }
