@@ -4,6 +4,7 @@ import {CreateUserDto} from "./core/dto/create-user.dto";
 import {UpdateUserDto} from "./core/dto/update-user.dto";
 import {BcryptService} from "../core/services/bcrypt.service";
 import {IUser} from "./core/interfaces/IUser";
+import {plugAvatar} from "./core/consts";
 
 @Controller('users')
 export class UsersController {
@@ -22,9 +23,10 @@ export class UsersController {
         }
 
         const hashedPassword = await this._bcryptService.createHash(userDto.password)
-        const newUser = {
+        const newUser: IUser = {
             ...userDto,
-            password: hashedPassword
+            password: hashedPassword,
+            avatar: userDto.avatar ? userDto.avatar : plugAvatar
         }
         return this._usersService.createUser(newUser)
     }
@@ -44,12 +46,14 @@ export class UsersController {
         @Param('id') id: string,
         @Body() userDto: UpdateUserDto
     ): Promise<IUser> {
-        const userById: IUser | null = await this._usersService.getUserById(userDto.email)
+        const userById: IUser | null = await this._usersService.getOneUser(id)
+
         if (!userById) {
             throw new UnauthorizedException('Пользователь не найден');
         }
 
         const userByEmail: IUser | null = await this._usersService.getUserByEmail(userDto.email)
+
         if (userByEmail) {
             if (userById._id.toString() !== userByEmail._id.toString()) {
                 throw new UnauthorizedException('Пользователь с таким email уже существует');

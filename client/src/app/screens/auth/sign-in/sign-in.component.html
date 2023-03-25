@@ -5,11 +5,12 @@
       <p>Войдите в свой аккаунт и исследуйте рецепты!</p>
     </div>
 
-    <form>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="item">
         <app-input
           label="Email"
           placeholder="cake@gmail.com"
+          formControlName="email"
         ></app-input>
       </div>
 
@@ -20,6 +21,7 @@
           [iconData]="showPassword ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash'"
           [type]="showPassword ? 'text' : 'password'"
           iconPosition="after"
+          formControlName="password"
           (onClickIcon)="toggleShowPassword()"
         ></app-input>
       </div>
@@ -29,6 +31,9 @@
           color="#242b44"
           text="Войти"
           size="lg"
+          width="full"
+          [disabled]="form.invalid"
+          (onClick)="onSubmit()"
         ></app-button>
       </div>
     </form>

@@ -5,11 +5,12 @@
       <p>Создайте свой аккаунт и исследуйте рецепты!</p>
     </div>
 
-    <form>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="item">
         <app-input
           label="Имя"
           placeholder="Котлета"
+          formControlName="firstName"
         ></app-input>
       </div>
 
@@ -17,6 +18,7 @@
         <app-input
           label="Фамилия"
           placeholder="Пюрешкина"
+          formControlName="lastName"
         ></app-input>
       </div>
 
@@ -25,6 +27,7 @@
           label="Email"
           placeholder="cake@gmail.com"
           type="email"
+          formControlName="email"
         ></app-input>
       </div>
 
@@ -34,6 +37,7 @@
           placeholder="+0 (000) 000 00 00"
           [mask]="maskPhoneNumber"
           [dropSpecialCharacters]="wastePhoneNumber"
+          formControlName="phoneNumber"
         ></app-input>
       </div>
 
@@ -45,6 +49,7 @@
           [type]="showPassword ? 'text' : 'password'"
           iconPosition="after"
           (onClickIcon)="toggleShowPassword()"
+          formControlName="password"
         ></app-input>
       </div>
 
@@ -55,6 +60,7 @@
           [iconData]="showConfirmPassword ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash'"
           [type]="showConfirmPassword ? 'text' : 'password'"
           iconPosition="after"
+          formControlName="confirmPassword"
           (onClickIcon)="toggleConfirmShowPassword()"
         ></app-input>
       </div>
@@ -64,6 +70,9 @@
           color="#242b44"
           text="Регистрация"
           size="lg"
+          width="full"
+          [disabled]="form.invalid"
+          (onClick)="onSubmit()"
         ></app-button>
       </div>
     </form>

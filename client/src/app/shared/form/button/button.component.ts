@@ -9,7 +9,9 @@ export class ButtonComponent {
 
   @Input() text: string = ''
   @Input() color: string = '#f3b949'
-  @Input() size: string = 'sm' || 'md' || 'lg';
+  @Input() size: string = 'sm' || 'md' || 'lg'
+  @Input() width: string = 'auto' || 'full'
+  @Input() disabled: boolean = false
 
   @Output() onClick: EventEmitter<boolean> = new EventEmitter<boolean>()
 
