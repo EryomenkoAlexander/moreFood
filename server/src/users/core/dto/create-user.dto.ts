@@ -6,4 +6,5 @@ export class CreateUserDto implements IUser {
     email: string
     phoneNumber: string
     password: string
+    avatar: string
 }

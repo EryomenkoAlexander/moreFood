@@ -45,7 +45,6 @@ export class UsersController {
         @Body() userDto: UpdateUserDto
     ): Promise<IUser> {
         const userById: IUser | null = await this._usersService.getOneUser(id)
-        console.log('id', id)
 
         if (!userById) {
             throw new UnauthorizedException('Пользователь не найден');
