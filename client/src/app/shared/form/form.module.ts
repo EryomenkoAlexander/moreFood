@@ -24,7 +24,7 @@ import {NgxMaskModule} from "ngx-mask";
     ReactiveFormsModule,
     InputComponent,
     ButtonComponent,
-    SelectComponent,
+    SelectComponent
   ],
   providers: []
 })

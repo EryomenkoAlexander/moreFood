@@ -40,6 +40,13 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     })
   }
 
+  private _filterPhoneNumber(value: string) {
+    return value
+      .split('')
+      .filter((i: string) => !this.wastePhoneNumber.includes(i))
+      .join('')
+  }
+
   public toggleShowPassword() {
     this.showPassword = !this.showPassword
   }
@@ -49,7 +56,12 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit() {
-    const data = this.form?.value
+    const formData = this.form?.value
+
+    const data = {
+      ...formData,
+      phoneNumber: this._filterPhoneNumber(formData.phoneNumber)
+    }
 
     this._authService.register(data)
       .pipe(takeUntil(this._destroy$))

@@ -24,7 +24,6 @@ export class InputComponent implements ControlValueAccessor{
   @Input() placeholder: string = ''
   @Input() iconData: string = ''
   @Input() mask: string = ''
-  @Input() dropSpecialCharacters: string[] = []
   @Input() iconPosition: string = '' // before || after
 
   @Output() onClickIcon: EventEmitter<boolean> = new EventEmitter<boolean>()
@@ -37,11 +36,13 @@ export class InputComponent implements ControlValueAccessor{
 
   public setValue(e: any) {
     const {value} = e.target
+
     if (this.type === 'number') {
       this.value = +value
     } else {
       this.value = value
     }
+
     this.onChange(this.value)
   }
 
