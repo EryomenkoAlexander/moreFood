@@ -57,7 +57,13 @@
           <i class="fa-solid fa-user"></i>
         </div>
         <div *ngIf="user" title="Профиль" (click)="goToCabinet()">
-          <img [src]="user.avatar" alt="avatar">
+          <div class="avatar"
+               [style.background-image]="'url(' + user.avatar + ')'"
+               [ngStyle]="{
+                  'background-color': !user.avatar ? '#97cf6e' : 'transparent'
+               }"
+          >
+          </div>
         </div>
       </div>
 

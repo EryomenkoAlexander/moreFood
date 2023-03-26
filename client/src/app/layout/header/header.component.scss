@@ -96,9 +96,11 @@
           color: #242b44;
         }
 
-        img {
-          width: 40px;
-          border-radius: 20px;
+        .avatar {
+          width: 30px;
+          height: 30px;
+          border-radius: 100%;
+          background: no-repeat center / cover;
         }
       }
     }
