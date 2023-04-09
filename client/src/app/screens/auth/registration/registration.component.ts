@@ -5,6 +5,8 @@ import {matchOtherValidator} from "../core/validators/match-other-validator";
 import {Router} from "@angular/router";
 import {Subject, takeUntil} from "rxjs";
 import {AuthService} from "../../../auth/services/auth.service";
+import {SnackbarService} from "../../../shared/snackbar/core/snackbar.service";
+import {IUser} from "../core/interfaces/IUser";
 
 @Component({
   selector: 'app-registration',
@@ -26,7 +28,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   constructor(
     private _fb: FormBuilder,
     private _authService: AuthService,
-    private _router: Router
+    private _router: Router,
+    private _snackbarService: SnackbarService
   ) { }
 
   private _initForm() {
@@ -65,8 +68,11 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
     this._authService.register(data)
       .pipe(takeUntil(this._destroy$))
-      .subscribe(() => {
+      .subscribe((response: IUser) => {
+        this._snackbarService.success('Пользователь успешно создан')
         this._router.navigate(['screens', 'auth', 'sign-in'])
+      }, ({error}) => {
+        this._snackbarService.error(error.message)
       })
   }
 
