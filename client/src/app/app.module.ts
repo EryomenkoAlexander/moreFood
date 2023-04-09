@@ -7,6 +7,7 @@ import {AppRouting} from "./app.routing";
 import {LayoutModule} from "./layout/layout.module";
 import {NgxMaskModule} from "ngx-mask";
 import {HttpClientModule} from "@angular/common/http";
+import {SnackbarModule} from "./shared/snackbar/snackbar.module";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {HttpClientModule} from "@angular/common/http";
     ScreensModule,
     LayoutModule,
     NgxMaskModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    SnackbarModule
   ],
   providers: [],
   bootstrap: [

@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {Subject, takeUntil} from "rxjs";
 import {ILoginResponse} from "../core/interfaces/ILoginResponse";
 import {AuthService} from "../../../auth/services/auth.service";
+import {SnackbarService} from "../../../shared/snackbar/core/snackbar.service";
 
 @Component({
   selector: 'app-sign-in',
@@ -23,7 +24,8 @@ export class SignInComponent implements OnInit, OnDestroy {
   constructor(
     private _fb: FormBuilder,
     private _authServer: AuthService,
-    private _router: Router
+    private _router: Router,
+    private _snackbarService: SnackbarService
   ) { }
 
   private _initForm() {
@@ -39,9 +41,12 @@ export class SignInComponent implements OnInit, OnDestroy {
     this._authServer.signIn(data)
       .pipe(takeUntil(this._destroy$))
       .subscribe((response: ILoginResponse) => {
+        this._snackbarService.success('Вход успешно выполнен')
         localStorage.setItem('moreFood-accessToken', response.access_token)
         localStorage.setItem('moreFood-userId', response._id)
         this._router.navigate(['screens', 'cabinet', response._id])
+      }, ({error}) => {
+        this._snackbarService.error(error.message)
       })
   }
 
