@@ -1,14 +1,14 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {ISnackbarData} from "./core/interfaces/ISnackbarData";
 import {SnackbarTypesEnum} from "./core/enums/SnackbarTypesEnum";
-import {SnackbarService} from "./core/snackbar.service";
+import {SnackbarService} from "./core/services/snackbar.service";
 
 @Component({
   selector: 'app-snackbar',
   templateUrl: './snackbar.component.html',
   styleUrls: ['./snackbar.component.scss']
 })
-export class SnackbarComponent {
+export class SnackbarComponent implements OnInit {
 
   @Input() snackbarData!: ISnackbarData
 
@@ -17,6 +17,12 @@ export class SnackbarComponent {
   constructor(
     private _snackbarService: SnackbarService
   ) { }
+
+  private _autoClose() {
+    setTimeout(() => {
+      this.close()
+    }, 5000)
+  }
 
   public getIcon(type: SnackbarTypesEnum): string {
     switch (type) {
@@ -32,6 +38,10 @@ export class SnackbarComponent {
     setTimeout(() => {
       this._snackbarService.hide()
     }, 500)
+  }
+
+  ngOnInit() {
+    this._autoClose()
   }
 
 }

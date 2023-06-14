@@ -5,7 +5,7 @@ import {matchOtherValidator} from "../core/validators/match-other-validator";
 import {Router} from "@angular/router";
 import {Subject, takeUntil} from "rxjs";
 import {AuthService} from "../../../auth/services/auth.service";
-import {SnackbarService} from "../../../shared/snackbar/core/snackbar.service";
+import {SnackbarService} from "../../../shared/snackbar/core/services/snackbar.service";
 import {IUser} from "../core/interfaces/IUser";
 
 @Component({
