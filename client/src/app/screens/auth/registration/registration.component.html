@@ -10,7 +10,7 @@
         <app-input
           label="Имя"
           placeholder="Котлета"
-          formControlName="firstName"
+          [control]="form.get('firstName')"
         ></app-input>
       </div>
 
@@ -18,7 +18,7 @@
         <app-input
           label="Фамилия"
           placeholder="Пюрешкина"
-          formControlName="lastName"
+          [control]="form.get('lastName')"
         ></app-input>
       </div>
 
@@ -27,7 +27,7 @@
           label="Email"
           placeholder="cake@gmail.com"
           type="email"
-          formControlName="email"
+          [control]="form.get('email')"
         ></app-input>
       </div>
 
@@ -36,7 +36,7 @@
           label="Номер телефона"
           placeholder="+0 (000) 000 00 00"
           [mask]="maskPhoneNumber"
-          formControlName="phoneNumber"
+          [control]="form.get('phoneNumber')"
         ></app-input>
       </div>
 
@@ -48,7 +48,7 @@
           [type]="showPassword ? 'text' : 'password'"
           iconPosition="after"
           (onClickIcon)="toggleShowPassword()"
-          formControlName="password"
+          [control]="form.get('password')"
         ></app-input>
       </div>
 
@@ -59,8 +59,8 @@
           [iconData]="showConfirmPassword ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash'"
           [type]="showConfirmPassword ? 'text' : 'password'"
           iconPosition="after"
-          formControlName="confirmPassword"
           (onClickIcon)="toggleConfirmShowPassword()"
+          [control]="form.get('confirmPassword')"
         ></app-input>
       </div>
 
@@ -88,7 +88,7 @@
     </div>
 
     <div class="google">
-      <img src="/assets/images/google.png" alt="google">
+      <img src="assets/images/icons/google.png" alt="google">
       <h5>Войти с помощью Google</h5>
     </div>
 

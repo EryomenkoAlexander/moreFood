@@ -20,8 +20,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   public linkConfidentiality: string = linkConfidentiality
   public showPassword: boolean = false;
   public showConfirmPassword: boolean = false;
-  public wastePhoneNumber = [' ', '(', ')']
-  public maskPhoneNumber = '+0 (000) 000 00 00'
+  public wastePhoneNumber: string[] = [' ', '(', ')']
+  public maskPhoneNumber: string = '+0 (000) 000 00 00'
 
   public form!: FormGroup
 
@@ -84,5 +84,4 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     this._destroy$.next(null);
     this._destroy$.complete();
   }
-
 }

@@ -49,6 +49,19 @@
     }
   }
 
+  .errorMessages {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+
+    > span {
+      color: #ff7171;
+      font-size: 12px;
+      font-weight: 500;
+      margin-left: 15px;
+    }
+  }
+
   .before {
 
     .icon {
@@ -70,6 +83,27 @@
 
     input {
       padding-right: 40px;
+    }
+  }
+
+  .invalid {
+
+    input {
+      border: 2px solid #ff7171;
+      box-shadow: #ff7171 0 0 5px;
+    }
+
+    .iconInvalid {
+      position: absolute;
+      right: -6px;
+      top: -6px;
+      background: #fff;
+      border-radius: 100%;
+      padding: 2px;
+      border: 2px solid #ff7171;
+      color: #ff7171;
+      width: 24px;
+      height: 24px;
     }
   }
 }
