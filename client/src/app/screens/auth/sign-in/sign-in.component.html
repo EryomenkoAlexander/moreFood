@@ -10,7 +10,7 @@
         <app-input
           label="Email"
           placeholder="cake@gmail.com"
-          formControlName="email"
+          [control]="form.get('email')"
         ></app-input>
       </div>
 
@@ -21,7 +21,7 @@
           [iconData]="showPassword ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash'"
           [type]="showPassword ? 'text' : 'password'"
           iconPosition="after"
-          formControlName="password"
+          [control]="form.get('password')"
           (onClickIcon)="toggleShowPassword()"
         ></app-input>
       </div>
@@ -50,7 +50,7 @@
     </div>
 
     <div class="google">
-      <img src="/assets/images/google.png" alt="google">
+      <img src="assets/images/icons/google.png" alt="google">
       <h5>Войти с помощью Google</h5>
     </div>
 

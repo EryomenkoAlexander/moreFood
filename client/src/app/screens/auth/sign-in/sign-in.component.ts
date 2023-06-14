@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
 import {Subject, takeUntil} from "rxjs";
 import {ILoginResponse} from "../core/interfaces/ILoginResponse";
 import {AuthService} from "../../../auth/services/auth.service";
-import {SnackbarService} from "../../../shared/snackbar/core/snackbar.service";
+import {SnackbarService} from "../../../shared/snackbar/core/services/snackbar.service";
 
 @Component({
   selector: 'app-sign-in',

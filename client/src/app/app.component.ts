@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ViewChild, ViewContainerRef} from '@angular/core';
-import {SnackbarService} from "./shared/snackbar/core/snackbar.service";
+import {SnackbarService} from "./shared/snackbar/core/services/snackbar.service";
 
 @Component({
   selector: 'app-root',

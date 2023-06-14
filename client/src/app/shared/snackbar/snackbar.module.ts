@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {SnackbarComponent} from "./snackbar.component";
 import {CommonModule} from "@angular/common";
-import {SnackbarService} from "./core/snackbar.service";
+import {SnackbarService} from "./core/services/snackbar.service";
 
 @NgModule({
   declarations: [

@@ -7,6 +7,6 @@ import {Component} from "@angular/core";
 })
 export class LogoComponent {
 
-  public logoPath: string = 'assets/images/logo.png'
+  public logoPath: string = 'assets/images/icons/logo.png'
 
 }
