@@ -7,6 +7,7 @@ import {kitchenMenu} from "./core/consts/kitchenMenu";
 import {HeaderService} from "./core/services/header.service";
 import {Subject, takeUntil} from "rxjs";
 import {IUser} from "../../screens/auth/core/interfaces/IUser";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-header',
@@ -24,6 +25,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public dishMenu: IDropDown[] = dishMenu
   public dishIsOpen: boolean = false;
+
+  public searchValueControl: FormControl = new FormControl<string>('')
 
   constructor(
     private _router: Router,
