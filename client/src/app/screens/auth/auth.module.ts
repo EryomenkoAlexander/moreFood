@@ -5,6 +5,7 @@ import {RouterModule} from "@angular/router";
 import {AuthRouting} from "./auth.routing";
 import {RegistrationComponent} from "./registration/registration.component";
 import {FormModule} from "../../shared/form/form.module";
+import {LoaderModule} from "../../shared/loader/loader.module";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {FormModule} from "../../shared/form/form.module";
   imports: [
     CommonModule,
     RouterModule.forChild(AuthRouting),
-    FormModule
+    FormModule,
+    LoaderModule
   ],
   exports: []
 })

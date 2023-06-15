@@ -19,6 +19,8 @@ export class SignInComponent implements OnInit, OnDestroy {
   public linkConfidentiality: string = linkConfidentiality
   public showPassword: boolean = false;
 
+  public isLoading: boolean = false
+
   public form!: FormGroup
 
   constructor(
@@ -36,16 +38,19 @@ export class SignInComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit() {
+    this.isLoading = true
     const data = this.form.value
 
     this._authServer.signIn(data)
       .pipe(takeUntil(this._destroy$))
       .subscribe((response: ILoginResponse) => {
+        this.isLoading = false
         this._snackbarService.success('Вход успешно выполнен')
         localStorage.setItem('moreFood-accessToken', response.access_token)
         localStorage.setItem('moreFood-userId', response._id)
         this._router.navigate(['screens', 'cabinet', response._id])
       }, ({error}) => {
+        this.isLoading = false
         this._snackbarService.error(error.message)
       })
   }

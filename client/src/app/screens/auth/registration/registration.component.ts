@@ -23,6 +23,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   public wastePhoneNumber: string[] = [' ', '(', ')']
   public maskPhoneNumber: string = '+0 (000) 000 00 00'
 
+  public isLoading: boolean = false
+
   public form!: FormGroup
 
   constructor(
@@ -59,6 +61,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit() {
+    this.isLoading = true
     const formData = this.form?.value
 
     const data = {
@@ -69,9 +72,11 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     this._authService.register(data)
       .pipe(takeUntil(this._destroy$))
       .subscribe((response: IUser) => {
+        this.isLoading = false
         this._snackbarService.success('Пользователь успешно создан')
         this._router.navigate(['screens', 'auth', 'sign-in'])
       }, ({error}) => {
+        this.isLoading = false
         this._snackbarService.error(error.message)
       })
   }
