@@ -54,6 +54,10 @@ export class SignInComponent implements OnInit, OnDestroy {
     this.showPassword = !this.showPassword
   }
 
+  public onClickGoogle() {
+    this._snackbarService.error('Авторизация с Google недоступна')
+  }
+
   ngOnInit() {
     this._initForm()
   }
