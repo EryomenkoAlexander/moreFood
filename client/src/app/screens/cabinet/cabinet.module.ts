@@ -4,6 +4,9 @@ import {CabinetRouting} from "./cabinet.routing";
 import {CabinetComponent} from "./cabinet.component";
 import {CabinetService} from "./core/services/cabinet.service";
 import {CommonModule} from "@angular/common";
+import {LoaderModule} from "../../shared/loader/loader.module";
+import {FormModule} from "../../shared/form/form.module";
+import {CabinetSliderModule} from "./cabinet-slider/cabinet-slider.module";
 
 @NgModule({
   declarations: [
@@ -11,7 +14,10 @@ import {CommonModule} from "@angular/common";
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(CabinetRouting)
+    RouterModule.forChild(CabinetRouting),
+    LoaderModule,
+    FormModule,
+    CabinetSliderModule
   ],
   exports: [],
   providers: [

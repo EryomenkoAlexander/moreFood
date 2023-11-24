@@ -6,8 +6,9 @@ import {RouterModule, RouterOutlet} from "@angular/router";
 import {AppRouting} from "./app.routing";
 import {LayoutModule} from "./layout/layout.module";
 import {NgxMaskModule} from "ngx-mask";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {SnackbarModule} from "./shared/snackbar/snackbar.module";
+import {AuthInterceptor} from "./screens/auth/core/interceptors/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import {SnackbarModule} from "./shared/snackbar/snackbar.module";
     HttpClientModule,
     SnackbarModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [
     AppComponent
   ]

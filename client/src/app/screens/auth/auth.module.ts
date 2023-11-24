@@ -18,6 +18,7 @@ import {LoaderModule} from "../../shared/loader/loader.module";
     FormModule,
     LoaderModule
   ],
-  exports: []
+  exports: [],
+  providers: []
 })
 export class AuthModule {}

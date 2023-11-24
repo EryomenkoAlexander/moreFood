@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
 import {CabinetService} from "./core/services/cabinet.service";
-import {Subject, takeUntil} from "rxjs";
+import {Observable, Subject, takeUntil} from "rxjs";
 import {IUser} from "../auth/core/interfaces/IUser";
 import {ActivatedRoute} from "@angular/router";
+import {SnackbarService} from "../../shared/snackbar/core/services/snackbar.service";
 
 @Component({
   selector: 'app-cabinet',
@@ -13,7 +14,7 @@ export class CabinetComponent implements OnInit, OnDestroy {
 
   private _destroy$: Subject<any> = new Subject<any>()
 
-  public user!: IUser
+  public user$!: Observable<IUser>
 
   get userId(): string {
     return this._route.snapshot.params['id']
@@ -21,15 +22,16 @@ export class CabinetComponent implements OnInit, OnDestroy {
 
   constructor(
     private _cabinetService: CabinetService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _snackbarService: SnackbarService
   ) { }
 
   private _getUser() {
-    this._cabinetService.getUser(this.userId)
-      .pipe(takeUntil(this._destroy$))
-      .subscribe((response: IUser) => {
-        this.user = response
-      })
+    this.user$ = this._cabinetService.getUser(this.userId)
+  }
+
+  public sendMessage() {
+    this._snackbarService.error('Отправка сообщений недоступна')
   }
 
   ngOnInit() {

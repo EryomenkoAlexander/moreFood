@@ -9,7 +9,7 @@ export class ButtonComponent {
 
   @Input() text: string = ''
   @Input() color: string = '#f3b949'
-  @Input() size: string = 'sm' || 'md' || 'lg'
+  @Input() size: 'sm' | 'md' | 'lg' = 'sm'
   @Input() width: string = 'auto' || 'full'
   @Input() disabled: boolean = false
 
